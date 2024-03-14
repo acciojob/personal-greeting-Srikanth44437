@@ -1,13 +1,27 @@
 
 import React from "react";
-import './../styles/App.css';
+import { Component } from "react";
 
-const App = () => {
-  return (
-    <div>
-        {/* Do not remove the main div */}
-    </div>
-  )
+
+class Greeting extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: "" };
+  }
+
+  changecontent = (event) => {
+    const newvalue = event.target.value;
+    this.setState({ value: newvalue });
+  }
+  render() {
+    return (
+      <>
+        <p>Enter your name:</p>
+        <input value={this.state.value} onChange={this.changecontent}  />
+        this.state.value ? <p>Hello {this.state.value}!</p> : null
+      </>
+    )
+  }
 }
 
-export default App
+export default Greeting;
